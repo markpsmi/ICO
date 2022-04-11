@@ -23,7 +23,7 @@ The above workflow uses the following SSH tasks with execute scripts for the fol
 
 ### updateks.sh
 
-![This is an image](updateks.PNG)
+![This is an image](images/updateks.PNG)
 
 ### makesesxi.sh
 
