@@ -38,19 +38,18 @@ Get the next available IPv4 address in the given network, by using the internal 
 ![This is an image](images/updateks.png)
 
 ### makesesxi.sh
-Reserve the next available IPv4 in a network.
 
-![This is an image](images/reserve-ipv4-reservation.png)
+
 
 > **Note: This custom task support Rollbacks by using Infoblox - Delete IPv4 Reservation**
 
 ### pingit.sh
-Delete an IPv4 Reservation
-![This is an image](images/delete-ipv4-reservation.png)
 
 
-Youtube video link: https://youtu.be/KpChPpUJuxo
 
 
-![This is an image](images/wf_sample_two.png)
+
+
+
+
 
