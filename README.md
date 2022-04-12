@@ -24,7 +24,7 @@ Create new ESXi ISO. Requires ESXi ISO on images server. Script builds new ISO w
 
 SSH Task Commmand /tmp/makeESXi {{.global.workflow.input.HostName}}
 
-![This is an image](images/pingit.PNG)
+![This is an image](images/makeesxi.PNG)
 
 
 ### pingit.sh
