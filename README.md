@@ -6,38 +6,36 @@ The above workflow uses the following SSH tasks with execute scripts for the fol
  - Update Kickstart File (updateks.sh)
  - Create New ESXi ISO (makeesxi.sh)
  - Wait for OS Install (pingit.sh)  
- Scripts are located in Scripts folder
-
-
-## Technical Information
-
-
-
-## Custom resources created in Intersight
-
-
-
+ > **Note: Scripts are located in scripts folder in repo**
 
 
 ## Script Details
 
 ### updateks.sh
+Update Kickstart file. Requires existing kickstart file on linux image server. Script can be modified to pass additional workflow parameters.
 
-![This is an image](images/updateks.PNG)
+SSH Task Command  /tmp/updateks.sh {{.global.workflow.input.HosteName}} {{.global.workflow.input.IpAddress}}
+
+![This is an image](images/updateks.png)
+
 
 ### makesesxi.sh
+Create new ESXi ISO. Requires ESXi ISO on images server. Script builds new ISO with Kickstart for vmedia install.
 
+SSH Task Commmand /tmp/makeESXi {{.global.workflow.input.HostName}}
 
+![This is an image](images/pingit.png)
 
-> **Note: This custom task support Rollbacks by using Infoblox - Delete IPv4 Reservation**
 
 ### pingit.sh
+Script runs and waits for OS to be installed by checking for reachablity or ESXI IP address
+
+SSH Task Command /tmp/pingit.sh {{.global.workflow.input.IpAddress}}
+
+![This is an image](images/pingit.png)
 
 
+## Workflow Image
 
-
-
-
-
-
+![This is an image](images/workflow.png)
 
