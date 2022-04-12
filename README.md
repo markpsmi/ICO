@@ -16,7 +16,7 @@ Update Kickstart file. Requires existing kickstart file on linux image server. S
 
 SSH Task Command  /tmp/updateks.sh {{.global.workflow.input.HosteName}} {{.global.workflow.input.IpAddress}}
 
-![This is an image](images/updateks.png)
+![This is an image](updateks.png)
 
 
 ### makesesxi.sh
