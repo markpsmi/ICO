@@ -16,7 +16,7 @@ Update Kickstart file. Requires existing kickstart file on linux image server. S
 
 SSH Task Command  /tmp/updateks.sh {{.global.workflow.input.HosteName}} {{.global.workflow.input.IpAddress}}
 
-![This is an image](updateks.PNG)
+![This is an image](images/updateks.PNG)
 
 
 ### makesesxi.sh
@@ -24,7 +24,7 @@ Create new ESXi ISO. Requires ESXi ISO on images server. Script builds new ISO w
 
 SSH Task Commmand /tmp/makeESXi {{.global.workflow.input.HostName}}
 
-![This is an image](images/pingit.png)
+![This is an image](images/pingit.PNG)
 
 
 ### pingit.sh
@@ -32,10 +32,10 @@ Script runs and waits for OS to be installed by checking for reachablity or ESXI
 
 SSH Task Command /tmp/pingit.sh {{.global.workflow.input.IpAddress}}
 
-![This is an image](images/pingit.png)
+![This is an image](images/pingit.PNG)
 
 
 ## Workflow Image
 
-![This is an image](images/workflow.png)
+![This is an image](images/workflow.PNG)
 
