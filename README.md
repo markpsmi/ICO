@@ -1,6 +1,6 @@
 # Repo for the ICO Bare Metal Provisioning Workflow
 
-This workflow installs ESXi OS on a Intersight UCS standalone server. The workflow does not use Intersight OS Install feature. The workflow generates the ESXi image with Kickstart file. The workflow requires a Linux VM to store the images and kickstart files. THe images are then installed using vMedia on the UCS server. The requires access to the images with either Https, NFS or CIFS. Example workflow uses CIFS.    
+This workflow installs ESXi OS on a Intersight UCS standalone server. The workflow does not use Intersight OS Install feature. The workflow generates the ESXi image with Kickstart file. The workflow requires a Linux VM to store the images and kickstart files. The newly built images are then installed using vMedia on the UCS server. The linux image server requires access to the images with either Https, NFS or CIFS. Example workflow uses CIFS.    
 
 The above workflow uses the following SSH tasks with execute scripts for the following:
  - Update Kickstart File (updateks.sh)
@@ -20,15 +20,15 @@ SSH Task Command  /tmp/updateks.sh {{.global.workflow.input.HosteName}} {{.globa
 
 
 ### makesesxi.sh
-Create new ESXi ISO. Requires ESXi ISO on images server. Script builds new ISO with Kickstart for vmedia install.
+Create new ESXi ISO. Requires ESXi ISO on image server. Script builds new ISO with Kickstart for vmedia install.
 
-SSH Task Commmand /tmp/makeESXi {{.global.workflow.input.HostName}}
+SSH Task Commmand /tmp/makeESXi.sh {{.global.workflow.input.HostName}}
 
 ![This is an image](images/makeESXi.PNG)
 
 
 ### pingit.sh
-Script runs and waits for OS to be installed by checking for reachablity or ESXI IP address
+Script runs and waits for OS to be installed by checking the reachablity of ESXI server IP address
 
 SSH Task Command /tmp/pingit.sh {{.global.workflow.input.IpAddress}}
 
