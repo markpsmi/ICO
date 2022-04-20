@@ -1,0 +1,8 @@
+#!/bin/bash
+SERVER=$1
+mount -o loop /tmp/VMware_ESXi_6.7.0_10302608_Custom_Cisco_6.7.1.1.iso /mnt/iso
+cp -r /mnt/iso/* /samba/$SERVER/esxi_cdrom
+umount /mnt/iso
+rm -f /samba/$PXEID/esxi_cdrom/boot.cfg
+cp /tmp/boot.cfg /samba/$SERVER/esxi_cdrom
+mkisofs -relaxed-filenames -J -R -o /samba/$SERVER/custom_esxi.iso -b isolinux.bin -c boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table /samba/$SERVER/esxi_cdrom
