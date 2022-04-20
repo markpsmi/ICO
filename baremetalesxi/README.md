@@ -1,4 +1,4 @@
-# Repo for the ICO Bare Metal Provisioning Workflow
+# Bare Metal Provisioning ESXi Workflow
 
 This workflow installs ESXi OS on a Intersight UCS standalone server. The workflow does not use Intersight OS Install feature. The workflow generates the ESXi image with Kickstart file. The workflow requires a Linux VM to store the images and kickstart files. The newly built images are then installed using vMedia on the UCS server. The linux image server requires access to the images with either Https, NFS or CIFS. Example workflow uses CIFS.    
 
