@@ -1,19 +1,23 @@
-# Bare Metal Provisioning ESXi Workflow
+# Deploy Opencart DB Server
 
-This workflow installs ESXi OS on a Intersight UCS standalone server. The workflow does not use Intersight OS Install feature. The workflow generates the ESXi image with Kickstart file. The workflow requires a Linux VM to store the images and kickstart files. The newly built images are then installed using vMedia on the UCS server. The linux image server requires access to the images with either Https, NFS or CIFS. Example workflow uses CIFS.    
+This workflow create a linux VM (CentOS 7) from VMware template. Does API call to Inblox to get IP and reserve it. It has a SSH task to wget ansible yaml for for the Opencart Database Installation. 
 
-The above workflow uses the following SSH tasks with execute scripts for the following:
- - Update Kickstart File (updateks.sh)
- - Create New ESXi ISO (makeesxi.sh)
- - Wait for OS Install (pingit.sh)  
- > **Note: Scripts are located in scripts folder in repo**
+## SSH Task Details for Opencart DB Server
 
+wget -O /tmp/oc_db.yaml http://172.16.58.2/apps/oc_db.yaml; sudo ansible-playbook -i localhost /tmp/oc_db.yaml
 
-## Script Details
+![This is an image](images/opencartworkflow.PNG)
 
-### updateks.sh
-Update Kickstart file. Requires existing kickstart file on linux image server. Script can be modified to pass additional workflow parameters.
+# Deploy Opencart Web Server
 
-SSH Task Command  /tmp/updateks.sh {{.global.workflow.input.HosteName}} {{.global.workflow.input.IpAddress}}
+This workflow create a linux VM (CentOS 7) from VMware template. Does API call to Inblox to get IP and reserve it. It has a SSH task to wget ansible yaml for for the Opencart Client Installation. Script also will create the initial Database on the Opencart Database Server.      
 
-![This is an image](images/updateks.PNG)
+## SSH Task Details for first Opencart Web Server)eb Server and initialization of Database
+
+wget -O /tmp/oc.yaml http://172.16.58.2/apps/oc.yaml; ansible-playbook -i localhost /tmp/oc.yaml; wget -O /tmp/config.php.sample http://172.16.58.2/apps/config.php.sample; sudo sed -i 's/<OC_DB_SERVER>/{{.global.workflow.input.OpenCartDBServer}}/g' /tmp/config.php.sample; sudo sed -i 's/<OC_SERVER>/{{.global.InfobloxReserveIPv4Address1.output.ipV4Address}}/g' /tmp/config.php.sample; cp /tmp/config.php.sample /var/www/html/opencart/config.php
+
+### SSH Task Details for additonal Opencart Web Servers 
+
+wget -O /tmp/oc.yaml http://172.16.58.2/apps/oc.yaml; ansible-playbook -i localhost /tmp/oc.yaml; wget -O /tmp/config.php.sample http://172.16.58.2/apps/config.php.sample; sudo sed -i 's/<OC_DB_SERVER>/{{.global.workflow.input.OpenCartDBServer}}/g' /tmp/config.php.sample; sudo sed -i 's/<OC_SERVER>/{{.global.InfobloxReserveIPv4Address1.output.ipV4Address}}/g' /tmp/config.php.sample; cp /tmp/config.php.sample /var/www/html/opencart/config.php
+
+![This is an image](images/opencartworkflow.PNG)
