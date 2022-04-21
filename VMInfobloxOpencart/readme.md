@@ -6,7 +6,7 @@ This workflow create a linux VM (CentOS 7) from VMware template. Does API call t
 
 wget -O /tmp/oc_db.yaml http://172.16.58.2/apps/oc_db.yaml; sudo ansible-playbook -i localhost /tmp/oc_db.yaml
 
-![This is an image](images/opencartworkflow.PNG)
+![This is an image](images/opencartDB.PNG)
 
 # Deploy Opencart Web Server
 
@@ -20,4 +20,4 @@ wget -O /tmp/oc.yaml http://172.16.58.2/apps/oc.yaml; ansible-playbook -i localh
 
 wget -O /tmp/oc.yaml http://172.16.58.2/apps/oc.yaml; ansible-playbook -i localhost /tmp/oc.yaml; wget -O /tmp/config.php.sample http://172.16.58.2/apps/config.php.sample; sudo sed -i 's/<OC_DB_SERVER>/{{.global.workflow.input.OpenCartDBServer}}/g' /tmp/config.php.sample; sudo sed -i 's/<OC_SERVER>/{{.global.InfobloxReserveIPv4Address1.output.ipV4Address}}/g' /tmp/config.php.sample; cp /tmp/config.php.sample /var/www/html/opencart/config.php
 
-![This is an image](images/opencartworkflow.PNG)
+![This is an image](images/opencartWeb.PNG)
