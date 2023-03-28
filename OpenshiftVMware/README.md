@@ -1,10 +1,10 @@
-# Bare Metal Provisioning ESXi Workflow
+# Provision Openshift Cluster on VMware Workflow
 
-This workflow installs ESXi OS on a Intersight UCS standalone server. The workflow does not use Intersight OS Install feature. The workflow generates the ESXi image with Kickstart file. The workflow requires a Linux VM to store the images and kickstart files. The newly built images are then installed using vMedia on the UCS server. The linux image server requires access to the images with either Https, NFS or CIFS. Example workflow uses CIFS.    
+This workflow provisoning a single node or 3 node Openshift cluster on WMware. The workflow has been tested using static IPs for both node types. For single node you just need one IP address. For 3 node cluster you need 5 IPs. One for each node and 1 for API and 1 for ingress. The IPs for nodes must be routable on VMware network for the VMs.    
 
-The above workflow uses the following SSH tasks with execute scripts for the following:
- - Update Kickstart File (updateks.sh)
- - Create New ESXi ISO (makeesxi.sh)
+The above workflow needs 3 targets. These targets require the Intersight Assist appliance to access.
+ - Powershell Target for Active Directory DNS automation
+ - ESXi SSH Target for downloading Redhat Openshift dicovery ISO
  - Wait for OS Install (pingit.sh)  
  > **Note: Scripts are located in scripts folder in repo**
 
