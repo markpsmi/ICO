@@ -5,26 +5,20 @@ This workflow provisoning a single node or 3 node Openshift cluster on WMware. T
 The above workflow needs 3 targets. These targets require the Intersight Assist appliance to access.
  - Powershell Target for Active Directory DNS automation
  - ESXi SSH Target for downloading Redhat Openshift dicovery ISO
- - Wait for OS Install (pingit.sh)  
- > **Note: Scripts are located in scripts folder in repo**
+ - vCenter Target standard VMware Target for Intersight Virtualization Services  
 
 
-## Script Details
+## Powershell Target Details
 
-### updateks.sh
-Update Kickstart file. Requires existing kickstart file on linux image server. Script can be modified to pass additional workflow parameters.
-
-SSH Task Command  /tmp/updateks.sh {{.global.workflow.input.HosteName}} {{.global.workflow.input.IpAddress}}
-
-![This is an image](images/updateks.PNG)
+Powershell Target with local administrator account for login and password. Use Intersight help instructions for creating the Powershell Target and running script for powershell access.
 
 
-### makesesxi.sh
-Create new ESXi ISO. Requires ESXi ISO on image server. Script builds new ISO with Kickstart for vmedia install.
+## ESXi SSH Target
+This must be one of your ESXi Servers in the Cluster that has access to the Datastore
 
-SSH Task Commmand /tmp/makeESXi.sh {{.global.workflow.input.HostName}}
 
-![This is an image](images/makeESXi.PNG)
+
+
 
 
 ### pingit.sh
