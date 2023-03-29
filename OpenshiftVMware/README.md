@@ -16,17 +16,8 @@ Powershell Target with local administrator account for login and password. Use I
 ## ESXi SSH Target
 This must be one of your ESXi Servers in the Cluster that has access to the Datastore
 
-
-
-
-
-
-### pingit.sh
-Script runs and waits for OS to be installed by checking the reachablity of ESXI server IP address
-
-SSH Task Command /tmp/pingit.sh {{.global.workflow.input.IpAddress}}
-
-![This is an image](images/pingit.PNG)
+## vCenter Target
+vCenter Target for the vCenter where the VMs are to be provisioned. The is the same target used for the Intersight Virtualization Services to gather inventory information. 
 
 
 ## Workflow Image
