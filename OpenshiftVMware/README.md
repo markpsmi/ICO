@@ -14,7 +14,7 @@ Powershell Target with local administrator account for login and password. Use I
 
 
 ## ESXi SSH Target
-This must be one of your ESXi Servers in the Cluster that has access to the Datastore
+This must be one of your ESXi Servers in the Cluster that has access to the Datastore. Login should be root and password for root.
 
 ## vCenter Target
 vCenter Target for the vCenter where the VMs are to be provisioned. The is the same target used for the Intersight Virtualization Services to gather inventory information. 
