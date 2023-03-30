@@ -20,6 +20,8 @@ This must be one of your ESXi Servers in the Cluster that has access to the Data
 vCenter Target for the vCenter where the VMs are to be provisioned. The is the same target used for the Intersight Virtualization Services to gather inventory information. 
 
 
-## Workflow Image
+## VMware Templates
+
+You must create VMware Templates for the VM Nodes. The template just contains the VMware configuration and no operating system. The minimum requirement for a Sign Node cluster is a VM with 16 vcpus, 39 Gig Memory and 120 gig disk. For three node cluster I suggest 8 vcpus 16 gig memory and 120 gig disk.
 
 ![This is an image](images/workflow.PNG)
