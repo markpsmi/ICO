@@ -28,4 +28,4 @@ You must create VMware Templates for the VM Nodes. The template just contains th
 
 ## Workflow Input Variables
 
-The workflow has many input variables. Most are one time changes that can be updated after importing the workflow. All the one time parameter have default values with no operator override so they will not show up during Executing the workflow unless change the override option. The variables that have override option are things like IP address, cluster name,etc that change with each execution. 
+The workflow has many input variables. Most are one time changes that can be updated after importing the workflow. All the one time parameters have default values with no operator override so they will not show up during execution of the workflow unless you change the override option. The variables that have override options are things like IP address, cluster name,etc that are variables that need to be changed with each execution. 
