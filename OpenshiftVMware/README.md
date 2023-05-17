@@ -47,7 +47,7 @@ Use Port 80
 No Authentication is required.
 No HTTPS needs to be enabled.
     
-If you have a different proxy host then you will need to changes the workflow tasks. See screen shots. 
+If you have a different proxy host then you will need to change the workflow tasks. See screen shots for Tasks to change. 
 
 ![This is an image](images/CreateClusterTaskInputBody.png)
 ![This is an image](images/CreateClusterProxySettings.png)
