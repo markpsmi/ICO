@@ -6,6 +6,8 @@ The workflow calls the APIs for the Openshift Assisted Installer. The workflow r
 
 Click view API Key and save to file. This key is used in a Workflow Input Parameter. 
 
+Once the Workflow complets then the Cluster will show up under the Cluster Tab. You can click on the cluster and get information like Openshift Console Link, login and password. Also you can download kubeconfig from there. 
+
 
 # Provision Openshift Cluster on VMware Workflow (no proxy)
 
