@@ -1,3 +1,12 @@
+# Openshift Requirements
+
+The workflow calls the APIs for the Openshift Assisted Installer. The workflow requires a Openshift Cluster Manager API Key. This can be found on the Redhat Hybrid Cloud Console under Clusters/Downloads. https://console.redhat.com/openshift/downloads This requires a Redhat Acccount to sign in. 
+
+![This is an image](images/RedhatConsoleDownloads.png)
+
+Click view API Key and save to file. This key is used in a Workflow Input Parameter. 
+
+
 # Provision Openshift Cluster on VMware Workflow (no proxy)
 
 This workflow provisons 3 node Openshift cluster on WMware. The workflow has been tested using static IPs.For 3 node cluster you need 5 IPs. One for each of the nodes and 1 for API and 1 for ingress services. You can use DHCP for 3 node cluster but you still need 2 static IP for the API and igress services. The IPs for nodes and API/igress services must be routable on VMware network.    
