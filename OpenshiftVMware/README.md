@@ -1,6 +1,6 @@
 # Provision Openshift Cluster on VMware Workflow (no proxy)
 
-This workflow provisons a single node or 3 node Openshift cluster on WMware. The workflow has been tested using static IPs for both node types. For single node you just need one IP address. For 3 node cluster you need 5 IPs. One for each of the nodes and 1 for API and 1 for ingress services. You can use DHCP for 3 node cluster but you still need 2 static IP for the API and igress services. The IPs for nodes and API/igress services must be routable on VMware network.    
+This workflow provisons 3 node Openshift cluster on WMware. The workflow has been tested using static IPs.For 3 node cluster you need 5 IPs. One for each of the nodes and 1 for API and 1 for ingress services. You can use DHCP for 3 node cluster but you still need 2 static IP for the API and igress services. The IPs for nodes and API/igress services must be routable on VMware network.    
 
 The above workflow needs 3 targets. These targets require the Intersight Assist appliance.
  - Powershell Target for Active Directory DNS automation
@@ -26,9 +26,9 @@ You must create VMware Templates for the VM Nodes. The template just contains th
 ![This is an image](images/OCP-VMTemplateparam.png)
 
 # Provision Openshift Cluster on VMware Workflow (with proxy)
-I am still in the process of combining proxy support with a single workflow. Right now it's a seperate workflow. It currently doesn't have the DNS automation. This could be added by adding the additional child workflow (Create DNS for Openshift Cluster). Also this workflow does not use the ESXi Target. It requires a Linux HTTP Target with Docker to run a container. 
+I am still in the process of combining proxy support with a single workflow. Right now it's a seperate workflows. This workflow currently doesn't have the DNS automation. This could be added by adding the additional child workflow (Create DNS for Openshift Cluster). Also this workflow does not use the ESXi Target. It requires a Linux HTTP Target with Docker to run a container. 
 
-## Link HTTP Target
+## Linux HTTP Target
 
 Command to start container. If you use a different proxy host the change the command.  
 docker run -d -p 80:80 —env http_proxy=http://proxy.esl.cisco.com:80 —env https_proxy=http://proxy.esl.cisco.com:80  baelen/iso-host
