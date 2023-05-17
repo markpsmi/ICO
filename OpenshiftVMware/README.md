@@ -30,18 +30,12 @@ This must be one of your ESXi Servers in the Cluster that has access to the Data
 ## vCenter Target
 vCenter Target for the vCenter where the VMs are to be provisioned. The is the same target used for the Intersight Virtualization Services to gather inventory information. 
 
-
-## VMware Templates
-
-You must create VMware Templates for the VM Nodes. The template just contains the VMware configuration and no operating system. The minimum requirement for a Sign Node cluster is a VM with 16 vcpus, 39 Gig Memory and 120 gig disk. For three node cluster I suggest 8 vcpus 16 gig memory and 120 gig disk. Each Templates need the following configuration parameter. 
-![This is an image](images/OCP-VMTemplateparam.png)
-
 # Provision Openshift Cluster on VMware Workflow (with proxy)
 I am still in the process of combining proxy support with a single workflow. Right now it's a seperate workflows. This workflow currently doesn't have the DNS automation. This could be added by adding the additional child workflow (Create DNS for Openshift Cluster). Also this workflow does not use the ESXi Target. It requires a Linux HTTP Target with Docker to run a container. 
 
 ## Linux HTTP Target
 
-Command to start container. If you use a different proxy host the change the command.  
+Command to start container. If you use a different proxy host then change the command.  
 docker run -d -p 80:80 —env http_proxy=http://proxy.esl.cisco.com:80 —env https_proxy=http://proxy.esl.cisco.com:80  baelen/iso-host
 
 Claim the ISO Host in Intersight as a HTTP target.
@@ -59,6 +53,11 @@ If you have a different proxy host then you will need to changes the workflow ta
 ![This is an image](images/CreateClusterProxySettings.png)
 ![This is an image](images/CreateInfraEnviromentBody.png)
 ![This is an image](images/CreateInfraEnvironmentProxy.png)
+
+## VMware Templates
+
+You must create VMware Templates for the VM Nodes. The template just contains the VMware configuration and no operating system. The minimum requirement for a Sign Node cluster is a VM with 16 vcpus, 39 Gig Memory and 120 gig disk. For three node cluster I suggest 8 vcpus 16 gig memory and 120 gig disk. Each Templates need the following configuration parameter. 
+![This is an image](images/OCP-VMTemplateparam.png)
 
 ## Workflow Input Variables
 
