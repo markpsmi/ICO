@@ -23,9 +23,10 @@ vCenter Target for the vCenter where the VMs are to be provisioned. The is the s
 ## VMware Templates
 
 You must create VMware Templates for the VM Nodes. The template just contains the VMware configuration and no operating system. The minimum requirement for a Sign Node cluster is a VM with 16 vcpus, 39 Gig Memory and 120 gig disk. For three node cluster I suggest 8 vcpus 16 gig memory and 120 gig disk. Each Templates need the following configuration parameter. 
+![This is an image](images/OCP-VMTemplateparam.png)
 
 # Provision Openshift Cluster on VMware Workflow (with proxy)
-I am still in the process of combine proxy support with a single workflow. Right now it's a seperate workflow. It currently doesn't have the DNS automation. This could be easlier added by adding the additional child workflow (Create DNS for Openshift Cluster). Also this workflow does not use the ESXi Target. It requires a Linux HTTP Target with Docker to run the container. 
+I am still in the process of combining proxy support with a single workflow. Right now it's a seperate workflow. It currently doesn't have the DNS automation. This could be added by adding the additional child workflow (Create DNS for Openshift Cluster). Also this workflow does not use the ESXi Target. It requires a Linux HTTP Target with Docker to run a container. 
 
 ## Link HTTP Target
 
@@ -34,25 +35,19 @@ docker run -d -p 80:80 —env http_proxy=http://proxy.esl.cisco.com:80 —env ht
 
 Claim the ISO Host in Intersight as a HTTP target.
 Under Targets click on Claim
-
-    Select the HTTP endpoint and click next
-    If you require an Intersight Assist to connect to your apache server select it first.
-    Enter the Name, Hostname for your apache server
-    Use Port 80
-    No Authentication is required.
-    No HTTPS needs to be enabled.
+Select the HTTP endpoint and click next
+If you require an Intersight Assist to connect to your apache server select it first.
+Enter the Name, Hostname for your apache server
+Use Port 80
+No Authentication is required.
+No HTTPS needs to be enabled.
     
-If you have a different proxy host the you will need to changes the workflow tasks. 
+If you have a different proxy host then you will need to changes the workflow tasks. See screen shots. 
 
-[This is an image](images/CreateClusterTaskInputBody.png)
-[This is an image](images/CreateClusterProxySettings.png)
-[This is an image](images/CreateInfraEnviromentBody.png)
-[This is an image](images/CreateInfraEnvironmentProxy.png)
-
-
-## VMware Template Configuration 
-
-![This is an image](images/OCP-VMTemplateparam.png)
+![This is an image](images/CreateClusterTaskInputBody.png)
+![This is an image](images/CreateClusterProxySettings.png)
+![This is an image](images/CreateInfraEnviromentBody.png)
+![This is an image](images/CreateInfraEnvironmentProxy.png)
 
 ## Workflow Input Variables
 
